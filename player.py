@@ -1,4 +1,10 @@
-from piece import Piece_Color
+from enum import Enum
+from piece import PieceColor
+
+class PlayerType(Enum):
+    human = "human"
+    bot = "bot"
+    # TODO: Add more
 
 class Player:
     def __init__(self, piece_color):

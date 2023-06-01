@@ -1,8 +1,8 @@
 from enum import Enum
 
-class Piece_Color(Enum):
-    black = 1
-    white = 2
+class PieceColor(Enum):
+    black = "Black"
+    white = "White"
 
 class Piece:
     def __init__(self, color):
