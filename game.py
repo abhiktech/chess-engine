@@ -20,6 +20,9 @@ class Game:
 
         while self.is_game_running:
             # TODO: How to figure out if game is over?
+
+            self.board.print_state()
+
             if self.current_player_piece_color == PieceColor.white:
                 self.player_white.make_move()
             else:
@@ -37,7 +40,7 @@ class Game:
         
         if player_type == PlayerType.human.value:
             return PlayerType.human
-        elif player == PlayerType.bot.value:
+        elif player_type == PlayerType.bot.value:
             return PlayerType.bot
 
     def get_player_object(piece_color, player_type):
