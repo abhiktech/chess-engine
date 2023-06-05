@@ -1,14 +1,10 @@
 from piece import Piece
 
 class Square:
-    def __init__(self, piece):
+    def __init__(self, piece, row, col):
         self.piece = piece
+        self.row = row
+        self.col = col
+        self.matrix_row = self.row - 1
+        self.matrix_col = ord(self.col) - 97
 
-    def set_state(self, piece):
-        self.piece = piece
-
-    def set_empty(self):
-        self.piece = None
-
-    def is_empty(self):
-        return self.piece == None

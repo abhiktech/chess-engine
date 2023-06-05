@@ -8,7 +8,7 @@ class Game:
         self.board = Board()
         self.player_white = None
         self.player_black = None
-        self.current_player_piece_color = PieceColor.white
+        self.player_turn_piece_color = PieceColor.white
         self.is_game_running = True
 
     def run(self):
@@ -23,16 +23,18 @@ class Game:
 
             self.board.print_state()
 
-            if self.current_player_piece_color == PieceColor.white:
-                self.player_white.make_move()
+            if self.player_turn_piece_color == PieceColor.white:
+                self.board = self.player_white.make_move(self.board, self.player_turn_piece_color)
             else:
-                self.player_black.make_move()
+                self.board = self.player_black.make_move(self.board, self.player_turn_piece_color)
             self.is_game_running = False # TODO: Remove
 
-        print("Player " + self.current_player_piece_color.value + " wins!")
+            self.board.print_state()
+
+        print("Player " + self.player_turn_piece_color.value + " wins!")
 
     def get_player_type(player):
-        input_prompt = f"Select Player {player} type : {PlayerType.human.value} {PlayerType.bot.value} : "
+        input_prompt = f"Select Player {player} type ({PlayerType.human.value}, {PlayerType.bot.value}) : "
         player_type = input(input_prompt)
         while player_type not in (PlayerType.human.value, PlayerType.bot.value):
             player_type = input("Incorrect input! " + input_prompt)
